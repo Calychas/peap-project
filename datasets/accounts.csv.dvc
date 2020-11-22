@@ -1,4 +1,3 @@
 outs:
 - md5: 770de02d407c75b594cf00e69a2f508f
-  size: 76107
   path: accounts.csv
