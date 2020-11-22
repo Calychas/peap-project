@@ -1,0 +1,13 @@
+process_accounts:
+  cmd: python src/data/process_accounts.py datasets/accounts.csv
+  deps:
+  - path: datasets/accounts.csv
+    md5: 770de02d407c75b594cf00e69a2f508f
+    size: 76107
+  - path: src/data/process_accounts.py
+    md5: 53471168892e4692fea14da97e6fd465
+    size: 984
+  outs:
+  - path: datasets/accounts_processed.csv
+    md5: 0efb900142a5dad635049fdd5b57e478
+    size: 58797

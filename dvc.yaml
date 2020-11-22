@@ -1,0 +1,8 @@
+stages:
+  process_accounts:
+    cmd: python src/data/process_accounts.py datasets/accounts.csv
+    deps:
+    - datasets/accounts.csv
+    - src/data/process_accounts.py
+    outs:
+    - datasets/accounts_processed.csv

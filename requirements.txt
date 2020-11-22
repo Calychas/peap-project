@@ -7,3 +7,5 @@ lxml
 twitter
 python-dotenv
 tqdm
+git+https://github.com/twintproject/twint.git@master#egg=twint
+git+https://github.com/yimingStar/twitter-scraper.git@fix/profile-error#egg=twitter-scraper
