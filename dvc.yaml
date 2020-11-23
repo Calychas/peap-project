@@ -6,3 +6,10 @@ stages:
     - src/data/process_accounts.py
     outs:
     - datasets/accounts_processed.csv
+  download_tweets:
+    cmd: python src/data/download_tweets.py datasets/accounts_processed.csv
+    deps:
+    - datasets/accounts_processed.csv
+    - src/data/download_tweets.py
+    outs:
+    - datasets/tweets/

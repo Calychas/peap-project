@@ -8,3 +8,17 @@ process_accounts:
   outs:
   - path: datasets/accounts_processed.csv
     md5: 0efb900142a5dad635049fdd5b57e478
+download_tweets:
+  cmd: python src/data/download_tweets.py datasets/accounts_processed.csv
+  deps:
+  - path: datasets/accounts_processed.csv
+    md5: 0efb900142a5dad635049fdd5b57e478
+    size: 58797
+  - path: src/data/download_tweets.py
+    md5: 38b529cfa0b06b0bad75d805d77d707b
+    size: 719
+  outs:
+  - path: datasets/tweets/
+    md5: 70312c5ef5c11c71a168ba373bcaf99c.dir
+    size: 820422676
+    nfiles: 548
