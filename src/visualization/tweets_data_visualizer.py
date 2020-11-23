@@ -8,7 +8,7 @@ import sys
 def plot_tweets_counts(accounts: pd.DataFrame) -> None:
     plt.figure(figsize=(12, 12))
     sns.histplot(data=accounts, x="tweets_count", binwidth=500)
-    plt.title("Twitter activity (tweets, retweets, replies) for accounts with less than 500 posts")
+    plt.title("Twitter activity (tweets, retweets, replies) for all accounts")
     plt.xlabel("Number of tweets for a user")
     plt.ylabel("Number of accounts")
     plt.savefig("reports/plots/all_replies_count_hist_full.png")
