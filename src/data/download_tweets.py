@@ -5,6 +5,7 @@ import pandas as pd
 import twint
 from tqdm import tqdm
 
+TWEETS_LOWER_LIMIT = 20
 
 def get_tweets_by_username(user: str):
     c = twint.Config()
@@ -27,5 +28,5 @@ if __name__ == '__main__':
 
     for _, account in tqdm(accounts.iterrows(), total=len(accounts)):
         if not os.path.isfile(f"datasets/tweets/{account['username']}.csv"):
-            if account['tweets_count'] > 20:
+            if account['tweets_count'] > TWEETS_LOWER_LIMIT:
                 get_tweets_by_username(account['username'])

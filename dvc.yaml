@@ -6,6 +6,15 @@ stages:
     - src/data/process_accounts.py
     outs:
     - datasets/accounts_processed.csv
+  visualize_tweets_count:
+    cmd: python src/visualization/tweets_data_visualizer.py datasets/accounts_processed.csv
+      --force
+    deps:
+      - datasets/accounts_processed.csv
+      - src/visualization/tweets_data_visualizer.py
+    outs:
+      - reports/plots/tweets_count_hist_full.png
+      - reports/plots/tweets_count_less_than_500_hist.png
   download_tweets:
     cmd: python src/data/download_tweets.py datasets/accounts_processed.csv
     deps:
