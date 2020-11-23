@@ -7,6 +7,7 @@ from tqdm import tqdm
 
 TWEETS_LOWER_LIMIT = 20
 
+
 def get_tweets_by_username(user: str):
     c = twint.Config()
     c.Username = user

@@ -22,11 +22,11 @@ visualize_tweets_count:
   cmd: python src/visualization/tweets_data_visualizer.py datasets/accounts_processed.csv
   deps:
   - path: datasets/accounts_processed.csv
-    md5: 0efb900142a5dad635049fdd5b57e478
+    md5: 4ef664dce274d928487810d6df34a31f
   - path: src/visualization/tweets_data_visualizer.py
-    md5: 35052fea9c0371f08526fa362cbb3e96
+    md5: d0fdb21fb25ee6f9dbe90390b69196ad
   outs:
   - path: reports/plots/all_replies_count_hist_full.png
-    md5: ca708092e16f213103cb22b7df46bb16
+    md5: bd7d2c874fa78827c77fe8f2d91d0551
   - path: reports/plots/all_replies_count_less_than_500_hist.png
-    md5: ca5a9ca069b13ff0f78861213848623e
+    md5: cf5647c72360c2091bd4d3ff67845cff
