@@ -36,9 +36,6 @@ if __name__ == '__main__':
 
     accounts = read_accounts_and_clean(accounts_file_path)
 
-    while True:
+    while accounts['tweets_count'].isna().sum() != 0:
         update_tweets_count_in_df(accounts)
         accounts.to_csv('datasets/accounts_processed.csv')
-
-        if accounts['tweets_count'].isna().sum() == 0:
-            break
