@@ -1,7 +1,6 @@
 import sys
 
 import pandas as pd
-from tqdm.auto import tqdm
 from twitter_scraper import Profile
 
 
@@ -19,8 +18,8 @@ def read_accounts_and_clean(path) -> pd.DataFrame:
     return df
 
 
-def get_tweets_count(accounts: pd.DataFrame):
-    for _, account in tqdm(accounts.iterrows(), total=len(accounts)):
+def update_tweets_count_in_df(accounts_df: pd.DataFrame):
+    for _, account in accounts_df.iterrows():
         if account['tweets_count'] is None:
             profile = Profile(account['username'])
             account['tweets_count'] = profile.tweets_count
@@ -32,7 +31,7 @@ if __name__ == '__main__':
     accounts = read_accounts_and_clean(accounts_file_path)
 
     while True:
-        get_tweets_count(accounts)
+        update_tweets_count_in_df(accounts)
         accounts.to_csv('datasets/accounts_processed.csv')
 
         if accounts['tweets_count'].isna().sum() == 0:
