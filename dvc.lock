@@ -20,14 +20,13 @@ download_tweets:
     md5: 70312c5ef5c11c71a168ba373bcaf99c.dir
 visualize_tweets_count:
   cmd: python src/visualization/tweets_data_visualizer.py datasets/accounts_processed.csv
-    --force
   deps:
   - path: datasets/accounts_processed.csv
     md5: 0efb900142a5dad635049fdd5b57e478
   - path: src/visualization/tweets_data_visualizer.py
-    md5: 6e21f51ad7ec55b73e2daee01f89cb90
+    md5: 35052fea9c0371f08526fa362cbb3e96
   outs:
-  - path: reports/plots/tweets_count_hist_full.png
-    md5: cc29256511797af8ca3562110bb4633e
-  - path: reports/plots/tweets_count_less_than_500_hist.png
-    md5: 3e6d6c0eec44323aaa3a3a440274537c
+  - path: reports/plots/all_replies_count_hist_full.png
+    md5: ca708092e16f213103cb22b7df46bb16
+  - path: reports/plots/all_replies_count_less_than_500_hist.png
+    md5: ca5a9ca069b13ff0f78861213848623e
