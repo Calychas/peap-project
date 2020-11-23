@@ -1,6 +1,7 @@
 import sys
 
 import pandas as pd
+from tqdm import trange
 from twitter_scraper import Profile
 
 
@@ -19,10 +20,15 @@ def read_accounts_and_clean(path) -> pd.DataFrame:
 
 
 def update_tweets_count_in_df(accounts_df: pd.DataFrame):
+    pbar = trange(len(accounts_df))
     for _, account in accounts_df.iterrows():
         if account['tweets_count'] is None:
             profile = Profile(account['username'])
             account['tweets_count'] = profile.tweets_count
+            if account['tweets_count'] is not None:
+                pbar.update(1)
+
+    pbar.close()
 
 
 if __name__ == '__main__':
