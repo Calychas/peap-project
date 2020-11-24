@@ -11,3 +11,4 @@ seaborn==0.11.0
 numpy==1.19.3
 git+https://github.com/twintproject/twint.git@master#egg=twint
 git+https://github.com/yimingStar/twitter-scraper.git@fix/profile-error#egg=twitter-scraper
+matplotlib~=3.3.3
