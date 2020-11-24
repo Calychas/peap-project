@@ -14,7 +14,10 @@ Derivables:
 
 
 What was achieved:
-- ...
+- **782** politicians were identified
+- **581** tweeter account were found
+- Out of those - **548** met requirements for minimal activity
+- **1 659 884** tweets were gathered (all tweets since each account creation)
 
 
 # Phase 2
