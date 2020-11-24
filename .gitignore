@@ -6,6 +6,7 @@ __pycache__/
 *.so
 
 # Distribution / packaging
+/venv/
 .Python
 /env/
 /build/
@@ -88,3 +89,6 @@ coverage.xml
 
 # Mypy cache
 .mypy_cache/
+
+# Venv stuff
+.python-version

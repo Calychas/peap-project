@@ -1,0 +1,32 @@
+process_accounts:
+  cmd: python src/data/process_accounts.py datasets/accounts.csv
+  deps:
+  - path: datasets/accounts.csv
+    md5: 770de02d407c75b594cf00e69a2f508f
+  - path: src/data/process_accounts.py
+    md5: 8b8e587cd1405e270bc82c295726f0ce
+  outs:
+  - path: datasets/accounts_processed.csv
+    md5: d81198e56c0c129cba75c81cba3a0cbe
+download_tweets:
+  cmd: python src/data/download_tweets.py datasets/accounts_processed.csv
+  deps:
+  - path: datasets/accounts_processed.csv
+    md5: d81198e56c0c129cba75c81cba3a0cbe
+  - path: src/data/download_tweets.py
+    md5: d5a087aab1dfa0246efc2f90ae1d6b8b
+  outs:
+  - path: datasets/tweets/
+    md5: 02e2ac87b0f8b014abe8f5466312ac15.dir
+visualize_tweets_count:
+  cmd: python src/visualization/tweets_data_visualizer.py datasets/accounts_processed.csv
+  deps:
+  - path: datasets/accounts_processed.csv
+    md5: d81198e56c0c129cba75c81cba3a0cbe
+  - path: src/visualization/tweets_data_visualizer.py
+    md5: 4381b9e60bfaa4e6c6a3608715d39d51
+  outs:
+  - path: reports/plots/all_replies_count_hist_full.png
+    md5: e434b75fc5eb836532728a86022dad66
+  - path: reports/plots/all_replies_count_less_than_500_hist.png
+    md5: cf5647c72360c2091bd4d3ff67845cff
