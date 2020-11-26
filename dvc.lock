@@ -30,3 +30,19 @@ visualize_tweets_count:
     md5: e434b75fc5eb836532728a86022dad66
   - path: reports/plots/all_replies_count_less_than_500_hist.png
     md5: cf5647c72360c2091bd4d3ff67845cff
+embed_tweets:
+  cmd: python src/data/embedding.py -m herbert -a mean -i datasets/tweets -o datasets/embeddings.csv
+    -p datasets/embeddings
+  deps:
+  - path: datasets/tweets
+    md5: 02e2ac87b0f8b014abe8f5466312ac15.dir
+    size: 820898667
+    nfiles: 548
+  outs:
+  - path: datasets/embeddings
+    md5: c31e124bea83f16cbaae48e8f90ce035.dir
+    size: 5099252722
+    nfiles: 548
+  - path: datasets/embeddings.csv
+    md5: 71a6487850d8a63c698a9f2ff043ec08
+    size: 6829270
