@@ -7,3 +7,5 @@ tweet_to_analyze_sentiment.csv
 /polemo
 /emojied2text_tweets
 tweets.pkl.gz
+tweets_cleaned.pkl.gz
+tweets_cleaned_emojied2text.pkl.gz
