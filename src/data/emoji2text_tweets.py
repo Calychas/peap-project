@@ -34,7 +34,7 @@ def emoji2text_tweets(input_dir: str, output_dir: str, emoji_mapping_file):
     emoji_mapping = json.load(emoji_mapping_file)
     politician_files_paths = list_full_paths(input_dir)
 
-    for path in tqdm(politician_files_paths[:10]):
+    for path in tqdm(politician_files_paths):
         emoji2text_file(path, output_dir, emoji_mapping)
 
 
