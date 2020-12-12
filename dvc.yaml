@@ -21,3 +21,11 @@ stages:
     outs:
     - reports/plots/all_replies_count_hist_full.png
     - reports/plots/all_replies_count_less_than_500_hist.png
+  embed_tweets:
+    cmd: python src/data/embedding.py -m herbert -a mean -i datasets/tweets -o datasets/embeddings.csv
+      -p datasets/embeddings
+    deps:
+    - datasets/tweets
+    outs:
+    - datasets/embeddings
+    - datasets/embeddings.csv
