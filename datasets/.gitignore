@@ -1,8 +1,8 @@
 /accounts.csv
 /accounts_processed.csv
 /tweets
+tweet_to_analyze_sentiment.csv
 /embeddings
 /embeddings.csv
-/tweet_to_analyze_sentiment.csv
 /polemo
 /emojied2text_tweets
