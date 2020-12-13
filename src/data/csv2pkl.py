@@ -21,7 +21,7 @@ import src.data.utils as utils
 )
 def csv2pkl(input_dir: str, output_file: str):
     full_paths = utils.list_full_paths(input_dir)
-    df = pd.concat(map(lambda x: pd.read_csv(x), full_paths))
+    df = pd.concat(map(lambda x: pd.read_csv(x), full_paths)).reset_index(drop=True)
     df.to_pickle(output_file)
 
 
