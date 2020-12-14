@@ -47,3 +47,10 @@ def get_frequencies(series: pd.Series, stop_words: Set[str] = None) -> Dict[str,
 
     frequencies = dict(sorted(frequencies.items(), key=lambda x: x[1], reverse=True))
     return frequencies
+
+
+def emoji2text_tweet(tweet: str, emoji_mapping_items: Dict[str, str]) -> str:
+    text = tweet
+    for emoji, emoji_text in emoji_mapping_items:
+        text = text.replace(emoji, f"<{emoji_text}>")
+    return text
