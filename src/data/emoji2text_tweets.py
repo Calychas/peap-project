@@ -26,17 +26,27 @@ import json
     type=click.File(mode="r", encoding="UTF-8"),
     required=True,
 )
-def emoji2text_tweets(input_file: str, output_file: str, emoji_mapping_file):
+@click.option(
+    "-u",
+    "--emoji-underscored",
+    "emoji_underscored",
+    type=bool,
+    required=True,
+    default=False
+)
+def emoji2text_tweets(input_file: str, output_file: str, emoji_mapping_file, emoji_underscored: bool):
     tqdm.pandas()
 
     click.echo(f"\nReading emoji mapping")
     emoji_mapping = json.load(emoji_mapping_file)
     emoji_mapping_items = emoji_mapping.items()
 
+    click.echo(f"Emoji underscored: {emoji_underscored}")
+
     def emoji2text_tweet(tweet: str) -> str:
         text = tweet
         for emoji, emoji_text in emoji_mapping_items:
-            text = text.replace(emoji, f"<{emoji_text}>")
+            text = text.replace(emoji, f" {emoji_text.replace(' ', '_')} " if emoji_underscored else f"<{emoji_text}>")
         return text
 
     click.echo(f"Reading tweets from {input_file}")
