@@ -1,10 +1,9 @@
 from os.path import exists, join
 from os import mkdir, listdir
-from typing import List
 from pathlib import Path
 import regex as re
 import json
-from typing import Set, Dict
+from typing import Set, Dict, List
 from sklearn.feature_extraction.text import CountVectorizer
 import pandas as pd
 import numpy as np
