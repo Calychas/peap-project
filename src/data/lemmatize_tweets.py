@@ -10,7 +10,7 @@ VERB_TAGS = {"fin", "praet", "impt", "imps", "inf"}
 ADJ_TAGS = {"adj", "adja", "adjp", "adjc", "pact", "ppas"}
 
 
-def checkKrnntWorking():
+def check_krnnt_working():
     try:
         requests.get(url)
         click.echo(f"Found krnnt tagger at {url}")
@@ -108,7 +108,7 @@ def lemmatize_tweets(
     tqdm.pandas()
 
     click.echo()
-    checkKrnntWorking()
+    check_krnnt_working()
 
     click.echo(f"Reading tweets from {input_file}")
     df: pd.DataFrame = pd.read_pickle(input_file)
