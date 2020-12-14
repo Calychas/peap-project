@@ -16,7 +16,7 @@ def check_krnnt_working():
         click.echo(f"Found krnnt tagger at {url}")
     except:
         raise Exception(
-            f"Krnnt tagger is not available at {url}. Please run: 'docker run -p 9003:9003 -it -d djstrong/krnnt:1.0.0'"
+            f"Krnnt tagger is not available at {url}. Please run: 'docker run -p 9003:9003 --rm -it -d djstrong/krnnt:1.0.0'"
         )
 
 
