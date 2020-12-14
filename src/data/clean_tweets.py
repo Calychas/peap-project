@@ -5,11 +5,12 @@ import regex as re
 
 
 def process_text(text):
-    text = re.sub(r"http\S+", "", text)
-    text = re.sub(r"\S+\.com\S+", "", text)
-    text = re.sub(r"\@\w+", "", text)
-    text = re.sub(r"\#", "", text)
-    text = re.sub(r"\s+", " ", text)
+    text = re.sub(r"http\S+", "", text)  # removes http links
+    text = re.sub(r"\S+\.com\S+", "", text)  # removes links that have no http but end with com
+    text = re.sub(r"\S+\.pl\S+", "", text)  # removes links that have no http but end with pl
+    text = re.sub(r"\@\w+", "", text)  # removes whole mentions
+    text = re.sub(r"\#", "", text)  # removes hashes (content of hashtag remains)
+    text = re.sub(r"\s+", " ", text)  # convert multiple spaces into one
     return text
 
 
