@@ -1,7 +1,6 @@
 /accounts.csv
 /accounts_processed.csv
 /tweets
-tweet_to_analyze_sentiment.csv
 /embeddings
 /embeddings.csv
 /polemo
