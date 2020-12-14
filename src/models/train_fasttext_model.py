@@ -5,6 +5,8 @@ import fasttext
 import json
 from typing.io import IO
 
+from src.data.utils import emoji2text_tweet
+
 
 def remove_quotes_from_saved_file(txt_path: str):
     text = ""
@@ -27,18 +29,12 @@ def get_training_df_for_fasttext(train_polemo_path: str, political_tweets_path: 
     emoji_mapping = json.load(emoji_mapping_file)
     emoji_mapping_items = emoji_mapping.items()
 
-    def emoji2text_tweet(tweet: str) -> str:
-        text = tweet
-        for emoji, emoji_text in emoji_mapping_items:
-            text = text.replace(emoji, f"<{emoji_text}>")
-        return text
-
     full_df = pd.DataFrame(columns=["label", "text"])
     for file_path in [train_polemo_path, political_tweets_path]:
         df = pd.read_csv(file_path)
         df = df[['label', 'text']]
         df['label'] = "__label__" + df['label']
-        df['text'] = df['text'].apply(emoji2text_tweet)
+        df['text'] = df['text'].apply(lambda text: emoji2text_tweet(text, emoji_mapping_items))
         df['text'] = df['text'].apply(lambda string: string.lower())
         df['text'] = df['text'].apply(lambda string: string.replace("#", ""))
         full_df = full_df.append(df)
