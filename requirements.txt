@@ -1,4 +1,4 @@
-wheel
+wheel==0.36.2
 selenium==3.141.0
 bs4==0.0.1
 pandas==1.1.4
