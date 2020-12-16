@@ -23,3 +23,4 @@ plotly==4.14.1
 regex==2020.11.13
 wordcloud==1.8.1
 Pillow==8.0.1
+http://pypi.clarin-pl.eu/packages/PLWN_API-0.23-py36-none-any.whl
