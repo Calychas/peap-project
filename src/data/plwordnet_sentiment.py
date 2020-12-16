@@ -15,14 +15,26 @@ from tqdm.auto import tqdm
 def sentiment_from_plwordnet(output_file: str):
     wordnet = plwn.load_default()
     lexical_units = wordnet.lexical_units()
-    print("Loaded lexical units from PLWORDNET")
+    click.echo("Loaded lexical units from PLWORDNET")
 
     emotions = []
 
     for lex_unit in tqdm(lexical_units):
         if lex_unit.is_emotional:
             emotions.append(
-                (lex_unit.emotion_example, lex_unit.emotion_markedness.name))
+                (
+                    lex_unit.emotion_example,
+                    lex_unit.emotion_markedness.name
+                )
+            )
+
+            if lex_unit.emotion_example_secondary not in ('', None):
+                emotions.append(
+                    (
+                        lex_unit.emotion_example_secondary,
+                        lex_unit.emotion_markedness.name
+                    )
+                )
 
     emotions_df = pd.DataFrame.from_records(emotions, columns=['text', 'label'])
 
@@ -33,6 +45,7 @@ def sentiment_from_plwordnet(output_file: str):
         'strong_positive': 'positive'
     }, inplace=True)
 
+    click.echo(f"Saving to texts with labels to {output_file}")
     emotions_df.to_csv(output_file, index=False)
 
 
