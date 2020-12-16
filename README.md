@@ -29,7 +29,21 @@ Derivables:
 
 
 What was achieved:
-- ...
+- Tweets advanced cleaning:
+  - Hashtag sign and mentions removal
+  - Links removed
+  - Emoji to text
+  - Lemmatization using KRNNT tagger
+  - Stopwords removal
+- Sentiment model creation:
+  - Sample of tweets annotated
+  - Sentiment classifier based on fastText and data from CLARIN-PL and annotated by us
+  - Example emotional texts from PLWORDNET extracted
+- Topic modelling:
+  - Trained LDA model
+  - Topics basic analysis for users/coallitions/...
+- Embeddings for users created based on cleaned tweets using HerBERT
+- Basic clustering analysis on tweets embeddings performed
 
 
 # Phase 3
