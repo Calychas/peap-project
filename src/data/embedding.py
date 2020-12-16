@@ -18,8 +18,8 @@ print(CUDA)
 @click.option(
     "-i",
     "--input-tweets-pickle",
-    "tweets_pickle_path",
-    type=click.Path(exists=True),
+    "input_tweets_pickle",
+    type=click.Path(exists=True, dir_okay=False),
     required=True,
 )
 @click.option(
@@ -28,10 +28,10 @@ print(CUDA)
 @click.option(
     "-p", "--partial-output-dir", "partial_output_dir", type=click.Path(file_okay=False, exists=False), required=False
 )
-def embed_accounts(model: str, aggregation: str, tweets_pickle_path: str, output_file: str, partial_output_dir: str):
+def embed_accounts(model: str, aggregation: str, input_tweets_pickle: str, output_file: str, partial_output_dir: str):
     save_partials = partial_output_dir is not None
 
-    tweets_df = pd.read_pickle(tweets_pickle_path)
+    tweets_df = pd.read_pickle(input_tweets_pickle)
 
     if save_partials and not os.path.exists(partial_output_dir):
         os.mkdir(partial_output_dir)
@@ -53,13 +53,19 @@ def embed_accounts(model: str, aggregation: str, tweets_pickle_path: str, output
                     embedding_results = embed_tweets(user, user_tweets, tokenizer, model, agg_func, save_partials)
                     if save_partials:
                         username = embedding_results[0]
-                        all_tweets_embeddings = embedding_results[-1]
-                        all_tweets_embeddings.to_pickle(os.path.join(partial_output_dir, f"{username}.pkl.gz"))
+                        data_df = embedding_results[-1]
+                        data_df.to_pickle(os.path.join(partial_output_dir, f"{username}.pkl.gz"))
 
                         user_embedding = embedding_results[:-1]
                     else:
                         user_embedding = embedding_results
                     results.append(user_embedding)
+                else:
+                    data_df = pd.read_pickle(os.path.join(partial_output_dir, f"{user}.pkl.gz"))
+                    tweet_embeddings = list(data_df["tweet_embedding"].values)
+                    all_embeddings = np.vstack(tweet_embeddings)
+                    account_embedding = agg_func(all_embeddings)
+                    results.append((user,account_embedding))
 
             result_df = pd.DataFrame(results, columns=["username", "embedding"])
             result_df.to_csv(output_file, index=False)
