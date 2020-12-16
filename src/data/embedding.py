@@ -52,20 +52,19 @@ def embed_accounts(model: str, aggregation: str, input_tweets_pickle: str, outpu
                     user_tweets = tweets_df[tweets_df['username'] == user]
                     embedding_results = embed_tweets(user, user_tweets, tokenizer, model, agg_func, save_partials)
                     if save_partials:
-                        username = embedding_results[0]
                         data_df = embedding_results[-1]
-                        data_df.to_pickle(os.path.join(partial_output_dir, f"{username}.pkl.gz"))
+                        data_df.to_pickle(os.path.join(partial_output_dir, f"{user}.pkl.gz"))
 
-                        user_embedding = embedding_results[:-1]
+                        account_embedding = embedding_results[0]
                     else:
-                        user_embedding = embedding_results
-                    results.append(user_embedding)
+                        account_embedding = embedding_results
+                    results.append((user, account_embedding))
                 else:
                     data_df = pd.read_pickle(os.path.join(partial_output_dir, f"{user}.pkl.gz"))
                     tweet_embeddings = list(data_df["tweet_embedding"].values)
                     all_embeddings = np.vstack(tweet_embeddings)
                     account_embedding = agg_func(all_embeddings)
-                    results.append((user,account_embedding))
+                    results.append((user, account_embedding))
 
             result_df = pd.DataFrame(results, columns=["username", "embedding"])
             result_df.to_csv(output_file, index=False)
@@ -78,9 +77,8 @@ def embed_accounts(model: str, aggregation: str, input_tweets_pickle: str, outpu
         raise NotImplementedError(f"Model {model} not implemented.")
 
 
-def embed_tweets(
-        username: str, tweets_data: pd.DataFrame, tokenizer, model, aggregation, return_partials=False
-) -> Tuple[str, np.ndarray]:
+def embed_tweets(tweets_data: pd.DataFrame, tokenizer, model, aggregation, return_partials=False
+                 ) -> Tuple[np.ndarray]:
     tweet_indices = tweets_data.index.values.tolist()
     tweet_ids = tweets_data["id"].tolist()
     tweet_usernames = tweets_data["username"].tolist()
@@ -104,9 +102,9 @@ def embed_tweets(
     all_embeddings = np.vstack(tweet_embeddings)
     account_embedding = aggregation(all_embeddings)
     if return_partials:
-        return username, account_embedding, data_df
+        return account_embedding, data_df
     else:
-        return username, account_embedding
+        return account_embedding
 
 
 def chunks(lst, n):
