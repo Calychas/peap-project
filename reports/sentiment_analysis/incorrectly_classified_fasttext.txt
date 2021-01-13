@@ -1,0 +1,138 @@
+Tweets which were incorrrectly predicted:
+Tweet text: dzisiaj spotkanie śzgip z parlamentarzystami z woj. śl. dobra frekwencja. nikt z posłów nie bronił krytykowanych przez samorząd projektów.
+	 True label: __label__positive, predicted label: __label__negative, probability: 0.1968362182378769
+
+Tweet text: ✔️projekt gotowy! <dłoń z palcem wskazującym w prawo> dotrzymuję słowa. 18 maja 2019 r. podczas spotkania z emerytowanymi górnikami w wałbrzychu obiecałam przygotować nowelizację ustawy z dnia 17 grudnia 1998 r. o emeryturach i rentach z funduszu ubezpieczeń społecznych. sejmrp nowelizacja emeryci górnicy
+	 True label: __label__positive, predicted label: __label__neutral, probability: 0.3557848632335663
+
+Tweet text: premier jest już w pszczyna dotrzymujemysłowa
+	 True label: __label__positive, predicted label: __label__neutral, probability: 0.14415885508060455
+
+Tweet text: to jest skandal!
+	 True label: __label__negative, predicted label: __label__ambiguous, probability: 1.0000003385357559e-05
+
+Tweet text: - nie zejdziemy ze swej drogi, dalej będziemy reformować wymiar sprawiedliwości, bo tego potrzebuje rzeczpospolita i jej obywatele, nie ugniemy się pod naciskami ani wewnętrznymi, ani zewnętrznymi – napisał j.kaczyński do uczestników konwencji sprawiedliwapolska
+	 True label: __label__positive, predicted label: __label__negative, probability: 0.7490972280502319
+
+Tweet text: po pierwsze, jestem na posiedzeniu komisji ustawodawczej, która pracuje nad ustawą o komisji ds. pedofilii. po drugie, nie mogę uczestniczyć w pracach organu, którego większość składu została wybrana z naruszeniem konstytucji.
+	 True label: __label__neutral, predicted label: __label__negative, probability: 0.546748161315918
+
+Tweet text: dziś wybory do izb rolniczych idźcie głosować <przycisk z krzyżykiem> to ważne
+	 True label: __label__positive, predicted label: __label__neutral, probability: 0.3702353835105896
+
+Tweet text: szanowne, drogie panie, w dniu waszego święta z całego serca życzę samych słonecznych dni i spełnienia waszych marzeń. <serce>️<bukiet kwiatów>dzieńkobiet <serce>️<słonecznik><róża>
+	 True label: __label__positive, predicted label: __label__neutral, probability: 0.26285186409950256
+
+Tweet text: prezydent : ja nie mam żadnego problemu z tym, że czy są bardzo majętnymi ludźmi. ja mam problem z tym, że przepisują majtki na żony i probują to ukryć. arenaprezydencka trzaskowski2020
+	 True label: __label__negative, predicted label: __label__positive, probability: 0.16452647745609283
+
+Tweet text: wyruszamy z twojsztab na spotkania z mieszkańcami mazowsza i woj. podlaskiego porozmawiajmy
+	 True label: __label__neutral, predicted label: __label__positive, probability: 0.26285186409950256
+
+Tweet text: z pozdrowieniami dla pewnego księdza...
+	 True label: __label__negative, predicted label: __label__positive, probability: 0.06755668669939041
+
+Tweet text: grzegorz braun: naprzód polsko! zarządzajmy narodową werwą w miejsce obecnego zarządzania strachem! - youtube
+	 True label: __label__positive, predicted label: __label__neutral, probability: 0.4301573634147644
+
+Tweet text: prezes jarosław kaczyński , rada polityczna prawa i sprawiedliwości przez aklamację poparła kandydaturę andrzeja dudy na prezydenta rp.
+	 True label: __label__neutral, predicted label: __label__positive, probability: 0.23935934901237488
+
+Tweet text: <otwarta książka><książki>czytać trzeba, ale przed <kamera filmowa>kamerami nie zawsze jest to łatwe<uśmiechnięta twarz z otwartymi ustami>. zobaczcie sami<kciuk w górę>.
+	 True label: __label__neutral, predicted label: __label__ambiguous, probability: 0.26285186409950256
+
+Tweet text: to proszę popatrzeć lepiej.
+	 True label: __label__negative, predicted label: __label__ambiguous, probability: 0.003717252518981695
+
+Tweet text: nasz program nazywa się polska. dobrazmiana w nowej odsłonie *niższy, b. proporcjonalny zus dla mniej zarabiających, *obniżka podatku cit z 15 do 9 proc. dla małych firm, *duże inwestycje w drogi gminne i powiatowe, *program czyste powietrze, ruszamy w polskę!
+	 True label: __label__positive, predicted label: __label__neutral, probability: 0.40734341740608215
+
+Tweet text: witam serdecznie! śledzę pani bloga na salonie24! podziwiam od dawna! pozdrawima serdecznie!
+	 True label: __label__positive, predicted label: __label__neutral, probability: 0.21734751760959625
+
+Tweet text: udzielamwotum
+	 True label: __label__positive, predicted label: __label__neutral, probability: 0.003085370408371091
+
+Tweet text: prof. bartoszewski: wierzę w rozsądek i patriotyzm polaków, w polskę, w mój naród. dobrze, że mamy takiego prezydenta popieramkomorowskiego
+	 True label: __label__positive, predicted label: __label__neutral, probability: 0.30736804008483887
+
+Tweet text: dość dyktatury pisu, kleru, mężczyzn i kobiet rownież takich jak pani premier, poseł pawłowicz, joanna banasik.
+	 True label: __label__negative, predicted label: __label__positive, probability: 0.26285186409950256
+
+Tweet text: do piotrkowic…: w zeszłym tygodniu przyjechałem do piotrkowic (gm. chmielnik) by razem ze strażakami tamtejszej...
+	 True label: __label__positive, predicted label: __label__neutral, probability: 0.3923468291759491
+
+Tweet text: każdy dzień niech zbliża nas polaków do lepszej polski!
+	 True label: __label__positive, predicted label: __label__negative, probability: 0.4378334879875183
+
+Tweet text: i ważną uchwałę o emisji obligacji, z których sfinansujemy między innymi budowę dwóch szkół: przy ul. sławinkowskiej i na felinie. okazało się także, że radni mieli dużo pytań dotyczących bieżącego funkcjonowania miasta. wszystkie inne sprawy odłożyliśmy na inny termin sesji.
+	 True label: __label__positive, predicted label: __label__negative, probability: 0.3629792034626007
+
+Tweet text: ogromny szacunek za pracę, zaangażowanie i obdarowanie nas pięknymi chwilami, podczas których mogliśmy być dumni ze zwycięstw polki. brawo!!!
+	 True label: __label__positive, predicted label: __label__negative, probability: 0.320831298828125
+
+Tweet text: władza zamowiła tylko 2,5 mln. szczepionek na grypę co wystarczy dla 6.7% populacji, także... aaa zamienię mieszkanie w gdyni w atrakcyjnej lokalizacji na 3 szczepionki na grypę. tylko poważne oferty. marekdziała
+	 True label: __label__negative, predicted label: __label__ambiguous, probability: 0.2509227991104126
+
+Tweet text: gratulacje dla legii - zrobili to co lech od trzech lat nie może
+	 True label: __label__ambiguous, predicted label: __label__negative, probability: 0.1097157895565033
+
+Tweet text: oto skutki podsycania nienawiści. finałkampanii wypad2020
+	 True label: __label__negative, predicted label: __label__neutral, probability: 0.546748161315918
+
+Tweet text: żółtarewolucja
+	 True label: __label__positive, predicted label: __label__neutral, probability: 0.00240673148073256
+
+Tweet text: <twarz z monoklem> dziwne... to mieścicie się na jednej kanapie czy pufie?
+	 True label: __label__ambiguous, predicted label: __label__neutral, probability: 0.4378334879875183
+
+Tweet text: w żywcu świętujemy 101 lat polskiej niepodległości. <flaga: polska>️ to niezwykle ważne, abyśmy wciąż pamiętali o najważniejszych momentach dla naszego kraju i tę pamięć przekazywali kolejnym pokoleniom, dbając o naszą wolność każdego dnia. niech żyje wolna i niepodległa ‼️
+	 True label: __label__positive, predicted label: __label__neutral, probability: 0.44553956389427185
+
+Tweet text: "titanic" tonie... co na to kapitan tusk?
+	 True label: __label__negative, predicted label: __label__ambiguous, probability: 0.03733688220381737
+
+Tweet text: debataprezydencka oby trzaskowski nie walił za bardzo pięścią w stół, bo może znowu coś wypłynie z „czajki”<twarz ze łzami radości>
+	 True label: __label__ambiguous, predicted label: __label__negative, probability: 0.6224693655967712
+
+Tweet text: mazowsze i lubelskie - oficjalne otwarcie mostu im. edwarda wojtasa. teraz czeka nas przebudowa drogi 747 do lipska i iłży
+	 True label: __label__neutral, predicted label: __label__negative, probability: 0.1968362182378769
+
+Tweet text: spróbuję z nim pogadać i zapytam o co konkretnie chodzi.
+	 True label: __label__neutral, predicted label: __label__positive, probability: 0.3775506913661957
+
+Tweet text: ue jako kontynuacja europejskiej wspólnoty węgla i stali jest unią energetyczną bez specjalnych interwencji
+	 True label: __label__neutral, predicted label: __label__positive, probability: 0.24509501457214355
+
+Tweet text: po wczorajszym dniu dzisiejsze wystąpienie p.brejzy gdzie w pierwszym zdaniu przywołuje prezydenta lecha kaczyńskiego-to jawna prowokacja.
+	 True label: __label__negative, predicted label: __label__positive, probability: 0.2509227991104126
+
+Tweet text: t. piketty: potrzebujemy państwa opiekuńczego nie zamordystycznego lewica polska2020 świat2020 polityka
+	 True label: __label__ambiguous, predicted label: __label__negative, probability: 0.4225146472454071
+
+Tweet text: pod pretekstem walki z mniemaną pandemią totalniacka władza w pełnym porozumieniu z tresowaną opozycją proceduje właśnie ustawowe ramy nowego apartheidu, segregacji - na razie dla niezamaskowanych, jutro dla nieszczepionych.
+	 True label: __label__negative, predicted label: __label__positive, probability: 0.3276783227920532
+
+Tweet text: nowa rzeczywistość całego świata i europy to wyzwanie dla idei wspólnego dobra.polska pod prezydenturą andrzeja dudy będzie do brym tego wzorcem.
+	 True label: __label__positive, predicted label: __label__neutral, probability: 0.3007555902004242
+
+Tweet text: dotrzymujemy słowa i startujemy z modernizacją parku śląskiego. w tym roku wydamy 3️⃣️0️⃣️ milionów złotych. wyremontujemy . ➡️ halę "kapelusz" ➡️ kanał regatowy ➡️ kręgi taneczne ➡️ galerię rzeźby śląskiej...
+	 True label: __label__positive, predicted label: __label__neutral, probability: 0.6654205918312073
+
+Tweet text: którym nie do końca się czuję. ale na piwo do krakowa zawsze zapraszam!
+	 True label: __label__positive, predicted label: __label__ambiguous, probability: 0.607673168182373
+
+Tweet text: w 88 rocznicę tragicznej śmierci franciszka żwirko i stanisława wigury spotkaliśmy się pod pomnikiem lotników w bielsku-białej <flaga: polska>. wraz z seniorami lotnictwa i młodzieżą każdego roku czcimy pamięć bohaterów lotnictwa. żwirkoiwigura posełdrabek bielsko-biała
+	 True label: __label__positive, predicted label: __label__neutral, probability: 0.585111141204834
+
+Tweet text: po co tworzyć partnerstwo dla współrządzenia europą jak można powygrażać od hitlerowców i pomarzyć o reparacjach?
+	 True label: __label__negative, predicted label: __label__positive, probability: 0.287777841091156
+
+Tweet text: wcześniej rak krab huty stalowa wola podziwiał prezydent rp mspo2016 wojsko duma
+	 True label: __label__positive, predicted label: __label__neutral, probability: 0.7773098945617676
+
+Tweet text: słowo ciałem się stało, będziemy mieli nowego prezesa rady ministrów morawiecki. koniec spekulacji, strach w obozie władzy, konsternacja w elektoracie pis, przykrywka ust. o sn i krs. ciekawe czasy...
+	 True label: __label__ambiguous, predicted label: __label__neutral, probability: 0.3415925204753876
+
+Tweet text: po dzisiejszej radzie ministrów wysłałem zaproszenie do wszystkich przewodniczących klubów parlamentarnych na spotkanie dotyczące propozycji zapisów ustawy chroniącej dzieci i młodzież przed pornografią w sieci. wierzę, że wspólnie i ponad podziałami rozwiążemy ten ważny problem.
+	 True label: __label__positive, predicted label: __label__negative, probability: 0.585111141204834
