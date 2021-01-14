@@ -1,0 +1,35 @@
+Classification report for political tweets
+                    precision    recall  f1-score   support
+
+__label__ambiguous       0.00      0.00      0.00         5
+ __label__negative       0.54      0.54      0.54        24
+  __label__neutral       0.50      0.73      0.59        26
+ __label__positive       0.72      0.53      0.61        49
+
+          accuracy                           0.56       104
+         macro avg       0.44      0.45      0.44       104
+      weighted avg       0.59      0.56      0.56       104
+
+Classification report for polemo data
+                    precision    recall  f1-score   support
+
+__label__ambiguous       0.52      0.34      0.41       681
+ __label__negative       0.68      0.80      0.74      2123
+  __label__neutral       0.69      0.70      0.69      1419
+ __label__positive       0.77      0.69      0.72      1522
+
+          accuracy                           0.69      5745
+         macro avg       0.66      0.63      0.64      5745
+      weighted avg       0.69      0.69      0.68      5745
+
+Classification report for wordnet data
+                    precision    recall  f1-score   support
+
+__label__ambiguous       0.25      0.06      0.09       671
+ __label__negative       0.61      0.61      0.61      1338
+  __label__neutral       0.00      0.00      0.00         0
+ __label__positive       0.42      0.44      0.43       650
+
+          accuracy                           0.43      2659
+         macro avg       0.32      0.28      0.28      2659
+      weighted avg       0.48      0.43      0.44      2659
