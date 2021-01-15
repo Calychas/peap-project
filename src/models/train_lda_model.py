@@ -54,7 +54,7 @@ def train_topic_model(
     click.echo(f"Saved vectorizer at {output_vectorizer_file}")
 
     lda = LatentDirichletAllocation(n_components=topics_count, random_state=42,
-                                    verbose=True, evaluate_every=10, n_jobs=15,
+                                    verbose=True, evaluate_every=10, n_jobs=7,
                                     max_iter=100)
     lda.fit(counts)
 
