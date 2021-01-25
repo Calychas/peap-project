@@ -1,5 +1,3 @@
-from operator import index
-from turtle import mode
 from umap import UMAP
 from sklearn.manifold import TSNE
 import numpy as np
