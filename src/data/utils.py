@@ -59,12 +59,11 @@ def emoji2text_tweet(tweet: str, emoji_mapping_items: Dict[str, str]) -> str:
 def read_embeddings_dataframe(df_path: str) -> pd.DataFrame:
     embeddings_column_name = "embedding"
     csv_df = pd.read_csv(df_path)
-    embeddings = np.array(
-        [
-            np.array([np.float(i) for i in x.replace("]", "").replace("[", "").split()])
-            for x in csv_df[embeddings_column_name].tolist()
-        ]
-    )
+    embeddings = [
+        np.array([np.float(i) for i in x.replace("]", "").replace("[", "").split()])
+        for x in csv_df[embeddings_column_name].tolist()
+    ]
+
     correct_df = csv_df.drop(columns=[embeddings_column_name])
     correct_df[embeddings_column_name] = embeddings
     return correct_df
