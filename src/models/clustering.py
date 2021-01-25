@@ -4,18 +4,21 @@ import numpy as np
 from typing import Tuple, Dict, Union
 import pandas as pd
 import pickle as pkl
-
+import os
 
 def create_clustering_files(
     clustering_results: Tuple[
         pd.DataFrame, Dict[str, Union[KMeans, GaussianMixture, DBSCAN]]
     ],
-    labels_df_output_path: str,
-    models_dict_output_path: str,
+    output_path: str,
+    labels_file_name: str,
+    models_file_name: str,
 ):
     df, models = clustering_results
-    df.to_pickle(labels_df_output_path)
-    with open(models_dict_output_path, "wb") as f:
+    labels_path = os.path.join(output_path, f"{labels_file_name}.csv")
+    models_path = os.path.join(output_path, f"{models_file_name}.pkl.gz")
+    df.to_csv(labels_path, index=False)
+    with open(models_path, "wb") as f:
         pkl.dump(models, f)
 
 
