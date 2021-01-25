@@ -5,6 +5,7 @@ from typing import Tuple, Dict, Union
 import pandas as pd
 import pickle as pkl
 import os
+from sklearn.preprocessing import Normalizer
 
 def create_clustering_files(
     clustering_results: Tuple[
@@ -23,14 +24,14 @@ def create_clustering_files(
 
 
 def perform_clusterings(
-    users_dataframe: pd.DataFrame, k_means_clusters: int, gmm_clusters: int
+    users_dataframe: pd.DataFrame, k_means_clusters: int, gmm_clusters: int, db_scan_eps: float
 ) -> Tuple[pd.DataFrame, Dict[str, Union[KMeans, GaussianMixture, DBSCAN]]]:
     embedding_column = "embedding"
     data = np.array(users_dataframe[embedding_column].tolist())
 
     k_means_model, k_means_labels = cluster_k_means(data, k_means_clusters)
     gmm_model, gmm_labels = cluster_gmm(data, gmm_clusters)
-    db_scan_model, db_scan_models = cluster_db_scan(data)
+    db_scan_model, db_scan_models = cluster_db_scan(data, db_scan_eps)
 
     models_dict = {"k_means": k_means_model, "gmm": gmm_model, "db_scan": db_scan_model}
 
@@ -54,9 +55,9 @@ def cluster_gmm(data: np.ndarray, n_clusters: int):
     return model, labels
 
 
-def cluster_db_scan(data: np.ndarray):
+def cluster_db_scan(data: np.ndarray, eps: float):
     model = (
-        DBSCAN()
+        DBSCAN(eps=eps)
     )  # TODO: calculate distances in the embedding space to choose good epsilon
     labels = model.fit_predict(data)
     return model, labels
