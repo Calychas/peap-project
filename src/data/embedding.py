@@ -50,7 +50,7 @@ def embed_accounts(model: str, aggregation: str, input_tweets_pickle: str, outpu
             for user in tqdm(users):
                 if not os.path.exists(os.path.join(partial_output_dir, f"{user}.pkl.gz")):
                     user_tweets = tweets_df[tweets_df['username'] == user]
-                    embedding_results = embed_tweets(user, user_tweets, tokenizer, model, agg_func, save_partials)
+                    embedding_results = embed_tweets(user_tweets, tokenizer, model, agg_func, save_partials)
                     if save_partials:
                         data_df = embedding_results[-1]
                         data_df.to_pickle(os.path.join(partial_output_dir, f"{user}.pkl.gz"))
