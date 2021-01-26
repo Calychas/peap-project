@@ -1,3 +1,4 @@
 sentiment_model.bin
 *.vec
 *.pkl.gz
+politicalHerBERT
