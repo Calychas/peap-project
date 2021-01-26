@@ -117,23 +117,27 @@ def preprocess_polemo_files(train_file: str, val_file: str, test_file: str):
 )
 def train_sentiment_model(train_file_polemo: str, val_file_polemo: str, test_file_polemo: str,
                           political_tweets_file: str, emoji_mapping_file: IO, output_file: str):
+
+
     processed_polemo_files_paths = preprocess_polemo_files(train_file_polemo, val_file_polemo, test_file_polemo)
 
-    full_training_data = get_create_txt_training_file_for_fasttext(processed_polemo_files_paths['train'],
+    full_training_data = get_training_df_for_fasttext(processed_polemo_files_paths['train'],
                                                                    political_tweets_file, emoji_mapping_file)
     full_training_data['row'] = full_training_data['label'] + " " + full_training_data['text']
 
     path_to_dir = political_tweets_file.name.split(os.path.sep)[:-1]
-    path_to_dir.append("full_train_data.txt")
+    path_to_dir.append("full_polemo_tweets_train_data.txt")
 
     path_for_full_training_data = str(os.path.sep).join(path_to_dir)
     full_training_data['row'].to_csv(path_for_full_training_data, index=False,
                                      header=False)
     remove_quotes_from_saved_file(path_for_full_training_data)
 
+
     model = fasttext.train_supervised(input=path_for_full_training_data,
-                                      wordNgrams=5, neg=5, dim=300, lr=0.005, epoch=500, loss="ns", verbose=1,
-                                      label_prefix='__label__', thread=2)
+                                      wordNgrams=10, neg=5, dim=500, lr=0.003, epoch=500, loss="ns", verbose=1,
+                                      label_prefix='__label__', thread=1)
+
     model.save_model(output_file)
 
 

@@ -6,3 +6,4 @@
 /polemo
 /emojied2text_tweets
 tweets*.pkl.gz
+*.sqlite
