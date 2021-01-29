@@ -41,7 +41,9 @@ def embed_accounts(model: str, aggregation: str, input_tweets_pickle: str, outpu
         if model == "herbert":
             model = AutoModel.from_pretrained("allegro/herbert-base-cased")
         elif model == "politicalHerBERT":
-            model = AutoModel.from_pretrained(os.path.join("..", "trained_models", "politicalHerBERT"))
+            political_herbert_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "trained_models", "politicalHerBERT"))
+            print(political_herbert_path)
+            model = AutoModel.from_pretrained(political_herbert_path)
         if CUDA:
             model = model.to("cuda")
 

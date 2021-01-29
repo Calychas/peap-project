@@ -32,7 +32,7 @@ def create_umap_data_and_model(
     save_model(umap_3d)
 
 def perform_umap(data: np.ndarray, n_dimensions: int) -> Tuple[UMAP, np.ndarray]:
-    umap = UMAP(n_components=n_dimensions, metric='cosine')
+    umap = UMAP(n_components=n_dimensions)
     reduced = umap.fit_transform(data)
     return umap, reduced
 
