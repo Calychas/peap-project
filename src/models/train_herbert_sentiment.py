@@ -2,7 +2,9 @@ import os
 from typing import Tuple
 
 import click
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import f1_score
+from sklearn.model_selection import StratifiedKFold
 from tensorflow.python.keras.optimizer_v2.adam import Adam
 
 import pandas as pd
@@ -11,7 +13,7 @@ from keras.layers import Dense, Dropout, Input
 import numpy as np
 from src.models.fasttext_research import get_train_val_test_dataframes
 import tensorflow as tf
-from sklearn.preprocessing import LabelBinarizer
+from sklearn.preprocessing import LabelBinarizer, StandardScaler, MinMaxScaler
 
 
 def model_1():
@@ -20,12 +22,14 @@ def model_1():
     model.add(Dense(4, activation='softmax'))
     return model
 
+
 def model_2():
     model = Sequential()
     model.add(Input(768))
     model.add(Dense(256, activation='relu'))
     model.add(Dense(4, activation='softmax'))
     return model
+
 
 def model_3():
     model = Sequential()
@@ -34,7 +38,6 @@ def model_3():
     model.add(Dropout(0.3))
     model.add(Dense(4, activation='softmax'))
     return model
-
 
 
 class MetricsCallback(tf.keras.callbacks.Callback):
@@ -60,12 +63,11 @@ class MetricsCallback(tf.keras.callbacks.Callback):
         logs['train_tweets_f_scores'] = self.train_tweets_f_scores
         logs['val_tweets_f_scores'] = self.val_tweets_f_scores
 
-
     def calc_and_print_f1_score(self, embeddings, labels):
         one_hot_predict = self.model.predict(np.array(list(embeddings)))
-        f_score = f1_score(np.argmax(np.array(list(labels)), axis=1), np.argmax(one_hot_predict,axis=1), average='macro')
+        f_score = f1_score(np.argmax(np.array(list(labels)), axis=1), np.argmax(one_hot_predict, axis=1),
+                           average='macro')
         return f_score
-
 
 
 def run_multilayer_perceptron_experiments(train_tweets, val_tweets, train_polemo, train_wordnet, path_to_results: str):
@@ -73,35 +75,35 @@ def run_multilayer_perceptron_experiments(train_tweets, val_tweets, train_polemo
                                       val_tweets['embeddings'], val_tweets['label_enc'])
     for m in [model_1, model_2, model_3]:
         for lr in [0.00005, 0.0001, 0.0005, 0.001, 0.005]:
-            for name, train_dataset in {"polemo_tweets" :(train_polemo, train_tweets),
-                                  "wordnet_tweets": (train_wordnet, train_tweets),
-                                  "polemo_wordnet_tweets": (train_polemo, train_wordnet, train_tweets)}.items():
-                for importance_sampling_weight in [5,10,15]:
+            for name, train_dataset in {"polemo_tweets": (train_polemo, train_tweets),
+                                        "wordnet_tweets": (train_wordnet, train_tweets),
+                                        "polemo_wordnet_tweets": (train_polemo, train_wordnet, train_tweets)}.items():
+                for importance_sampling_weight in [5, 10, 15]:
                     train_polemo['weight'] = 1
                     train_wordnet['weight'] = 1
                     train_tweets['weight'] = importance_sampling_weight
-                    if type(train_dataset) is not tuple:
-                        train_df = train_dataset
-                    else:
-                        train_df = pd.concat(objs=train_dataset, axis=0)
+                    train_df = pd.concat(objs=train_dataset, axis=0)
 
                     model = m()
                     model.compile(optimizer=Adam(learning_rate=lr), loss='categorical_crossentropy')
 
-
-                    history = model.fit(x=np.array(list(train_df['embeddings'])), y=np.array(list(train_df['label_enc'])),
-                        validation_data=(np.array(list(val_tweets['embeddings'])), np.array(list(val_tweets['label_enc']))),
-                        batch_size=500, epochs=100, callbacks=[metric_callback], sample_weight=np.array(list(train_df['weight'])), verbose=0)
-
+                    history = model.fit(x=np.array(list(train_df['embeddings'])),
+                                        y=np.array(list(train_df['label_enc'])),
+                                        validation_data=(np.array(list(val_tweets['embeddings'])),
+                                                         np.array(list(val_tweets['label_enc']))),
+                                        batch_size=500, epochs=100, callbacks=[metric_callback],
+                                        sample_weight=np.array(list(train_df['weight'])), verbose=0)
 
                     results = pd.DataFrame(data={
-                                    "epoch": range(1,101),
-                                    "train_tweets_f_score": history.history['train_tweets_f_scores'][-1],
-                                       "val_tweets_f_score": history.history['val_tweets_f_scores'][-1],
-                                       "train_loss": history.history['loss'],
-                                       "val_loss": history.history['val_loss'],
-                                       })
-                    results.to_csv(os.path.join(path_to_results, f"{m.__name__}_{lr}_{name}_{importance_sampling_weight}.csv"),index=False)
+                        "epoch": range(1, 101),
+                        "train_tweets_f_score": history.history['train_tweets_f_scores'][-1],
+                        "val_tweets_f_score": history.history['val_tweets_f_scores'][-1],
+                        "train_loss": history.history['loss'],
+                        "val_loss": history.history['val_loss'],
+                    })
+                    results.to_csv(
+                        os.path.join(path_to_results, f"{m.__name__}_{lr}_{name}_{importance_sampling_weight}.csv"),
+                        index=False)
                     print(m.__name__)
                     print(lr)
                     print(name)
@@ -110,8 +112,6 @@ def run_multilayer_perceptron_experiments(train_tweets, val_tweets, train_polemo
                     print(history.history['val_tweets_f_scores'][-1][-1])
                     print(history.history['loss'][-1])
                     print(history.history['val_loss'][-1])
-
-
 
 @click.command()
 @click.option(
@@ -165,7 +165,7 @@ def run_multilayer_perceptron_experiments(train_tweets, val_tweets, train_polemo
     required=True
 )
 def train_models(train_polemo_embedded: str, val_polemo_embedded: str, test_polemo_embedded: str,
-                          political_tweets_embedded: str, wordnet_embedded: str, train_mlps: bool, path_to_results: str):
+                 political_tweets_embedded: str, wordnet_embedded: str, train_mlps: bool, path_to_results: str):
     train_polemo = pd.read_pickle(train_polemo_embedded)
     val_polemo = pd.read_pickle(val_polemo_embedded)
     test_polemo = pd.read_pickle(test_polemo_embedded)
