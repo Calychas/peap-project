@@ -13,7 +13,7 @@ print(CUDA)
 
 
 @click.command("embed")
-@click.option("-m", "--model", type=click.Choice(["herbert"]), required=True)
+@click.option("-m", "--model", type=click.Choice(["herbert", "politicalHerBERT"]), required=True)
 @click.option("-a", "--aggregation", type=click.Choice(["mean"]), required=True)
 @click.option(
     "-i",
@@ -36,9 +36,12 @@ def embed_accounts(model: str, aggregation: str, input_tweets_pickle: str, outpu
     if save_partials and not os.path.exists(partial_output_dir):
         os.mkdir(partial_output_dir)
 
-    if model == "herbert":
+    if model == "herbert" or model == "politicalHerBERT":
         tokenizer = AutoTokenizer.from_pretrained("allegro/herbert-base-cased")
-        model = AutoModel.from_pretrained("allegro/herbert-base-cased")
+        if model == "herbert":
+            model = AutoModel.from_pretrained("allegro/herbert-base-cased")
+        elif model == "politicalHerBERT":
+            model = AutoModel.from_pretrained(os.path.join("..", "trained_models", "politicalHerBERT"))
         if CUDA:
             model = model.to("cuda")
 
