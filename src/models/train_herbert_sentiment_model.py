@@ -53,7 +53,7 @@ def train_model_and_save(dataset, path_to_model: str):
 )
 @click.option(
     "-pt",
-    "--political-tweets-tembedded",
+    "--political-tweets-embedded",
     "political_tweets_embedded",
     type=click.Path(file_okay=True, exists=True),
     required=True

@@ -168,7 +168,7 @@ def run_best_models(train_tweets, val_tweets, train_polemo, val_polemo, train_wo
 )
 @click.option(
     "-pt",
-    "--political-tweets-tembedded",
+    "--political-tweets-embedded",
     "political_tweets_embedded",
     type=click.Path(file_okay=True, exists=True),
     required=True
