@@ -1,3 +1,4 @@
 tweet_to_analyze_sentiment.csv
 sentiment_from_plwordnet.csv
 *.txt
+*herbert.pkl.gz
