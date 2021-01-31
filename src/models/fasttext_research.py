@@ -43,13 +43,13 @@ def get_train_val_test_dataframes(texts: List, labels: List, train_size: float, 
     assert train_size + val_size + test_size == 1.0
 
     texts_train_val, texts_test, labels_train_val, labels_test = train_test_split(
-        texts, labels, test_size=test_size, random_state=42)
+        texts, labels, test_size=test_size, random_state=42, stratify=labels)
 
     texts_train, texts_val, labels_train, labels_val = train_test_split(
         texts_train_val,
         labels_train_val,
         test_size=val_size / (1 - test_size),
-        random_state=42)
+        random_state=42, stratify=labels_train_val)
 
     train_df = pd.DataFrame(data={"text": texts_train, "label": labels_train})
     val_df = pd.DataFrame(data={"text": texts_val, "label": labels_val})
