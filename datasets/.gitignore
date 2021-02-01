@@ -7,3 +7,4 @@
 /emojied2text_tweets
 tweets*.pkl.gz
 *.sqlite
+lda*.pkl.gz
