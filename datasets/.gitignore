@@ -2,7 +2,9 @@
 /accounts_processed.csv
 /tweets
 /embeddings
+/embeddings_old
 /embeddings.csv
+/embeddings_old.csv
 /polemo
 /emojied2text_tweets
 tweets*.pkl.gz
