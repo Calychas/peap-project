@@ -60,7 +60,7 @@ class Model3(nn.Module):
 
 def predict(torch_model, data, encoder=None):
     out = torch_model(data)
-    y_pred = np.argmax(out, axis=1)
+    y_pred = np.argmax(out.detach().numpy(), axis=1)
     if encoder is not None:
         b = np.zeros((y_pred.size()[0], 4))
         b[np.arange(y_pred.size()[0]), y_pred] = 1
