@@ -28,7 +28,7 @@ class NeuralNetwork(nn.Module):
 def train_model_and_save(dataset, path_to_model: str):
     model = NeuralNetwork()
 
-    optimizer = optim.Adam(model.parameters(), lr=0.0001)
+    optimizer = optim.Adam(model.parameters(), lr=0.0005)
     loss = nn.CrossEntropyLoss()
 
     train_data = []
@@ -37,13 +37,12 @@ def train_model_and_save(dataset, path_to_model: str):
         train_data.append([row['embeddings'], row['label_enc']])
         samples_weights.append(row['weight'])
 
-    full_train_data_arr = np.array(train_data)
     sampler = WeightedRandomSampler(samples_weights, len(samples_weights))
 
     train_loader = DataLoader(
         train_data, batch_size=500, num_workers=1, sampler=sampler)
 
-    for epoch in range(200):
+    for epoch in range(75):
         for batch_idx, (data, target) in enumerate(train_loader):
             optimizer.zero_grad()
             out = model(data)
@@ -53,15 +52,6 @@ def train_model_and_save(dataset, path_to_model: str):
             if batch_idx % 50 == 0:
                 print(
                     f'Train Epoch: {epoch} [{batch_idx}/{len(train_loader)} ({100. * batch_idx / len(train_loader):.0f}%)]\tLoss: {out_loss.data.item():.6f}')
-
-        with torch.no_grad():
-            all_data = torch.Tensor(np.vstack(full_train_data_arr[:,0]))
-            all_labels =  np.vstack(full_train_data_arr[:,1])
-            out = model(all_data)
-            y_pred = np.argmax(out, axis=1)
-            y_true = np.argmax(all_labels, axis=1)
-            print(f1_score(y_true, y_pred, average='macro'))
-
 
     torch.save(model, path_to_model)
 
