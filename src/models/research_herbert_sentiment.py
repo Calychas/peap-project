@@ -201,13 +201,13 @@ class EarlyStopping(object):
 def run_best_models(train_tweets, val_tweets, train_polemo, val_polemo, train_wordnet, val_wordnet, test_tweets,
                     path_to_results: str, encoder, path_to_plots: str):
     best_parameters = {
-        "first": (Model2, 0.0005, 10, (train_polemo, train_tweets, val_polemo, val_tweets)),
-        "second": (Model2, 0.0005, 15, (train_polemo, train_tweets, val_polemo, val_tweets)),
-        "third": (Model2, 0.0005, 5, (train_polemo, train_tweets, val_polemo, val_tweets)),
-        "fourth": (
+        "Model_2_lr_0.0005_weight_10_polemo_tweets": (Model2, 0.0005, 10, (train_polemo, train_tweets, val_polemo, val_tweets)),
+        "Model_2_lr_0.0005_weight_15_polemo_tweets": (Model2, 0.0005, 15, (train_polemo, train_tweets, val_polemo, val_tweets)),
+        "Model_2_lr_0.0005_weight_5_polemo_tweets": (Model2, 0.0005, 5, (train_polemo, train_tweets, val_polemo, val_tweets)),
+        "Model_2_lr_0.0005_weight_10_polemo_tweets_wordnet": (
             Model2, 0.0005, 10, (train_polemo, train_tweets, train_wordnet, val_polemo, val_tweets, val_wordnet)),
-        "fifth": (Model2, 0.001, 15, (train_polemo, train_tweets, val_polemo, val_tweets)),
-        "sixth": (Model3, 0.001, 15, (train_polemo, train_tweets, val_polemo, val_tweets))}
+        "Model_2_lr_0.001_weight_15_polemo_tweets": (Model2, 0.001, 15, (train_polemo, train_tweets, val_polemo, val_tweets)),
+        "Model_3_lr_0.001_weight_15_polemo_tweets": (Model3, 0.001, 15, (train_polemo, train_tweets, val_polemo, val_tweets))}
     for name, parameters in best_parameters.items():
         train_polemo['weight'] = 1
         train_wordnet['weight'] = 1
