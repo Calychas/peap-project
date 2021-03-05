@@ -4,3 +4,4 @@ sentiment_model.bin
 politicalHerBERT
 sentiment_model.pth
 sentiment_encoder.pkl
+sentiment_model.h5
