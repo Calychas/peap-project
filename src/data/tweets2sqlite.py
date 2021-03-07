@@ -29,6 +29,7 @@ import click
 def save_to_sqlite(tweets_file: str, sqlite_file: str, db_name: str):
     engine = create_engine(f'sqlite:///{sqlite_file}')
     tweets = pd.read_pickle(tweets_file)
+    tweets = tweets.drop(columns=['tweet'])
     tweets.to_sql(db_name, con=engine)
 
 
